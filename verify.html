@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica Tessera - Fuori Giri Bikers</title>
+    <style>
+        body { background-color: #0d0d0d; color: #ffffff; font-family: Arial, sans-serif; text-align: center; padding: 30px 15px; }
+        .card { background: #161616; border: 3px solid #333; padding: 25px; border-radius: 15px; display: inline-block; max-width: 380px; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .valid { border-color: #22c55e !important; color: #22c55e; font-size: 22px; font-weight: bold; margin: 15px 0; }
+        .invalid { border-color: #ef4444 !important; color: #ef4444; font-size: 22px; font-weight: bold; margin: 15px 0; }
+        .info { text-align: left; margin-top: 15px; font-size: 15px; line-height: 1.6; border-top: 1px solid #333; padding-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="main-card">
+        <h2 style="color: #22c55e; margin: 0;">Fuori Giri Bikers (FGB)</h2>
+        <p style="color: #888; font-size: 13px;">Sistema di Verifica Ufficiale</p>
+        
+        <div id="status">Verifica in corso...</div>
+        <div class="info" id="details"></div>
+    </div>
+
+    <script>
+        // DATABASE DEI TESSERATI UFFICIALI FGB
+        const membri = {
+            "FGB-2026-001": { nome: "Armando Pio Margio", nickname: "Admin", ruolo: "Fondatore" },
+            "FGB-2026-002": { nome: "Salvatore", nickname: "Salvo 457", ruolo: "Membro" },
+            "FGB-2026-003": { nome: "Lorenzo", nickname: "Panigale V4", ruolo: "Membro" },
+            "FGB-2026-004": { nome: "Domenico", nickname: "Domenico MT-09", ruolo: "Membro" },
+            "FGB-2026-005": { nome: "Antony", nickname: "Antony Hornet", ruolo: "Membro" }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        const card = document.getElementById('main-card');
+        const status = document.getElementById('status');
+        const details = document.getElementById('details');
+
+        if (id && membri[id]) {
+            const m = membri[id];
+            card.classList.add('valid');
+            status.className = 'valid';
+            status.innerHTML = '✔ TESSERA VALIDA';
+            details.innerHTML = `
+                <b>Nome:</b> ${m.nome}<br>
+                <b>Nickname:</b> ${m.nickname}<br>
+                <b>Ruolo:</b> ${m.ruolo}<br>
+                <b>ID Tessera:</b> ${id}<br>
+                <b>Stagione:</b> 2026<br><br>
+                <span style="color: #22c55e; font-size: 13px;">✓ Questo membro ha diritto agli sconti e convenzioni ufficiali FGB.</span>
+            `;
+        } else {
+            card.classList.add('invalid');
+            status.className = 'invalid';
+            status.innerHTML = '✖ TESSERA NON VALIDA';
+            details.innerHTML = `
+                Tessera non trovata nel database o non attiva.<br><br>
+                <span style="color: #ef4444; font-size: 13px;">⚠️ Attenzione: Questa tessera potrebbe essere scaduta o contraffatta.</span>
+            `;
+        }
+    </script>
+</body>
+</html>
