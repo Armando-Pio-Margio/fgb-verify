@@ -1,85 +1,85 @@
 <!DOCTYPE html>
-htmlhtml lang="esso">
-<testa>
-    <meta set di caratteri="UTF-8">
-    <meta nome="viewport" contenuto="larghezza=larghezza del dispositivo, scala iniziale=1,0">
-    <titolo>Verifica Tessera - Fuori Giri Bikers (FGB)</titolo>
-    <stile>
-        corpo {
-            colore di sfondo: #0f0f0f;
-            colore: #ffffff;
-            famiglia di caratteri: Arial, sans-serif;
-            visualizzazione: flettere;
-            giustificare-contenuto: centro;
-            allinea-elementi: centro;
-            altezza: 100vh;
-            margine: 0;
+<html lang="it" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica Tessera - Fuori Giri Bikers (FGB)</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .carta {
-            sfondo: #1a1a1a;
-            confine: 3px solido #22c55e;
-            raggio di confine: 12px;
-            imbottitura: 30px;
-            larghezza: 350px;
-            allineamento del testo: centro;
-            ombra a scatola: 0 8px 24px rgba(0,0,0,0,5);
+        .card {
+            background: #1a1a1a;
+            border: 3px solid #22c55e;
+            border-radius: 12px;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
-        h2 { colore: #22c55e; margine superiore: 0; dimensione del carattere: 22px; }
-        .stato-valido { colore: #22c55e; peso del carattere: audace; dimensione del carattere: 18px; margine: 15px 0; }
-        .stato non valido { colore: #ef4444; peso del carattere: audace; dimensione del carattere: 18px; margine: 15px 0; }
-        .informazioni { allineamento del testo: Sinistra; margine superiore: 20px; dimensione del carattere: 15px; altezza della linea: 1.6; }
-        .informazioni campata { colore: #a1a1aa; }
-    </stile>
-</testa>
-<corpo>
+        h2 { color: #22c55e; margin-top: 0; font-size: 22px; }
+        .status-valid { color: #22c55e; font-weight: bold; font-size: 18px; margin: 15px 0; }
+        .status-invalid { color: #ef4444; font-weight: bold; font-size: 18px; margin: 15px 0; }
+        .info { text-align: left; margin-top: 20px; font-size: 15px; line-height: 1.6; }
+        .info span { color: #a1a1aa; }
+    </style>
+</head>
+<body>
 
-    <div classe="carta">
+    <div class="card">
         <h2>FUORI GIRI BIKERS</h2>
-        <div id="risultato">Verifica in corso...</div>
+        <div id="result">Verifica in corso...</div>
     </div>
 
-    <sceneggiatura>
-        costante membriDB = {
-            "FGB-2026-001": { nome: "Armando Pio Margio", soprannome: "Amministratore", stadio: "2026" },
-            "FGB-2026-002": { nome: "Antonia Antignano", soprannome: "Antonia", stadio: "2026" },
-            "FGB-2026-003": { nome: "Vincenzo D'Antonio", soprannome: "Vinz TRK", stadio: "2026" },
-            "FGB-2026-004": { nome: "Maria Varriale", soprannome: "Maria", stadio: "2026" },
-            "FGB-2026-005": { nome: "Mariapia D'Ambrosio", soprannome: "Mariapia", stadio: "2026" },
-            "FGB-2026-006": { nome: "Salvatore Basile", soprannome: "Salvatore", stadio: "2026" },
-            "FGB-2026-007": { nome: "Santo Angelino", soprannome: "Santo", stadio: "2026" },
-            "FGB-2026-008": { nome: "Salvatore Picone", soprannome: "Salvo 457", stadio: "2026" },
-            "FGB-2026-009": { nome: "Vincenzo Avemaria", soprannome: "Vincenzo", stadio: "2026" },
-            "FGB-2026-010": { nome: "Michela Panico", soprannome: "Michela", stadio: "2026" },
-            "FGB-2026-011": { nome: "Lorenzo Raitante", soprannome: "Panigale V4", stadio: "2026" },
-            "FGB-2026-012": { nome: "Antonio Lingria", soprannome: "Antony Hornet", stadio: "2026" },
-            "FGB-2026-013": { nome: "Davide Marotta", soprannome: "Davide", stadio: "2026" },
-            "FGB-2026-014": { nome: "Domenico Ferone", soprannome: "Domenico MT-09", stadio: "2026" },
-            "FGB-2026-015": { nome: "Pierluigi Del Bono", soprannome: "Pierluigi", stadio: "2026" },
-            "FGB-2026-016": { nome: "Samuele Arabia", soprannome: "Samu FGB", stadio: "2026" },
-            "FGB-2026-017": { nome: "Domenico Citarelli", soprannome: "Domenico", stadio: "2026" }
+    <script>
+        const membriDB = {
+            "FGB-2026-001": { nome: "Armando Pio Margio", nickname: "Admin", stagione: "2026" },
+            "FGB-2026-002": { nome: "Antonia Antignano", nickname: "Antonia", stagione: "2026" },
+            "FGB-2026-003": { nome: "Vincenzo D'Antonio", nickname: "Vinz TRK", stagione: "2026" },
+            "FGB-2026-004": { nome: "Maria Varriale", nickname: "Maria", stagione: "2026" },
+            "FGB-2026-005": { nome: "Mariapia D'Ambrosio", nickname: "Mariapia", stagione: "2026" },
+            "FGB-2026-006": { nome: "Salvatore Basile", nickname: "Salvatore", stagione: "2026" },
+            "FGB-2026-007": { nome: "Santo Angelino", nickname: "Santo", stagione: "2026" },
+            "FGB-2026-008": { nome: "Salvatore Picone", nickname: "Salvo 457", stagione: "2026" },
+            "FGB-2026-009": { nome: "Vincenzo Avemaria", nickname: "Vincenzo", stagione: "2026" },
+            "FGB-2026-010": { nome: "Michela Panico", nickname: "Michela", stagione: "2026" },
+            "FGB-2026-011": { nome: "Lorenzo Raitante", nickname: "Panigale V4", stagione: "2026" },
+            "FGB-2026-012": { nome: "Antony Lingria", nickname: "Antony Hornet", stagione: "2026" },
+            "FGB-2026-013": { nome: "Davide Marotta", nickname: "Davide", stagione: "2026" },
+            "FGB-2026-014": { nome: "Domenico Ferone", nickname: "Domenico MT-09", stagione: "2026" },
+            "FGB-2026-015": { nome: "Pierluigi Del Bono", nickname: "Pierluigi", stagione: "2026" },
+            "FGB-2026-016": { nome: "Samuele Arabia", nickname: "Samu FGB", stagione: "2026" },
+            "FGB-2026-017": { nome: "Domenico Citarelli", nickname: "Domenico", stagione: "2026" }
         };
 
-        costante urlParams = nuovo URLSearchParams(finestra.posizione.ricerca);
-        costante idTessera = urlParams.Ottenere('id');
-        costante risultatoDiv = documento.getElementById('risultato');
+        const urlParams = new URLSearchParams(window.location.search);
+        const idTessera = urlParams.get('id');
+        const resultDiv = document.getElementById('result');
 
-        Se (idTessera && membriDB[idTessera]) {
-            costante m = membriDB[idTessera];
-            risultatoDiv.innerHTML = `
+        if (idTessera && membriDB[idTessera]) {
+            const m = membriDB[idTessera];
+            resultDiv.innerHTML = `
                 <div class="status-valid">✔ TESSERA VALIDA</div>
                 <div class="info">
-                    <p><span>Tesserato:</span><br><strong>${m.nome}</forte></p>
-                    <p><span>Soprannome:</span><br><strong>${m.soprannome}</forte></p>
-                    <p><span>ID Tessera:</span><br><strong>${idTessera}</forte></p>
-                    <p><span>Stagione:</span><br><strong>${m.stadio}</forte></p>
+                    <p><span>Tesserato:</span><br><strong>${m.nome}</strong></p>
+                    <p><span>Nickname:</span><br><strong>${m.nickname}</strong></p>
+                    <p><span>ID Tessera:</span><br><strong>${idTessera}</strong></p>
+                    <p><span>Stagione:</span><br><strong>${m.stagione}</strong></p>
                 </div>
             `;
-        } altro {
-            risultatoDiv.innerHTML = `
+        } else {
+            resultDiv.innerHTML = `
                 <div class="status-invalid">✖ TESSERA NON VALIDA</div>
                 <p style="color: #a1a1aa; font-size: 14px;">Il codice tessera fornito non esiste o non è registrato nel sistema ufficiale FGB.</p>
             `;
         }
-    </sceneggiatura>
-</corpo>
+    </script>
+</body>
 </html>
